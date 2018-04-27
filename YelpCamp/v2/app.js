@@ -18,20 +18,6 @@ const campgroundSchema = new mongoose.Schema({
 // Mongoose Model
 const Campground = mongoose.model("Campground", campgroundSchema);
 
-// Campground creation
-// Campground.create({
-//     name: "Mountain Goat's Rest",
-//     image: "https://images.unsplash.com/photo-1455763916899-e8b50eca9967?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ec456c4aeb71d3aecbe65e586d186ec0&auto=format&fit=crop&w=1950&q=80"
-// }, (err, campground) => {
-//     if (err) {
-//         console.log(err)
-//     }
-//     else {
-//         console.log("Newly created Campground: ")
-//         console.log(campground);
-//     }
-// });
-
 // Routing
 // GET routes
 app.get("/", (req, res) => res.render("landing"));
@@ -52,14 +38,20 @@ app.get("/campgrounds/new", (req, res) => res.render("new"));
 
 // POST routes
 app.post("/campgrounds", (req, res) => {
-    // Get data from form and add to Campgrounds array
+    // Get data from form and create Object
     let name = req.body.name;
     let image = req.body.image;
     let newCampground = { name: name, image: image };
-    campgrounds.push(newCampground)
     // Create a new campground and save to DB
-    // Redirect back to campgrounds page
-    res.redirect("/campgrounds");
+    Campground.create(newCampground, (err, newlyCreated) => {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            // Redirect back to campgrounds page
+            res.redirect("/campgrounds");
+        }
+    });
 });
 
 // Server init
