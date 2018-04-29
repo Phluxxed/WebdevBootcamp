@@ -12,11 +12,15 @@
     <div class="row" style="display:flex; flex-wrap: wrap;">
         <% campgrounds.forEach( (campground) => { %>
             <div class="col-md-3 col-sm-6" style="margin-bottom: 20px">
-                <div class="card text-white bg-success" style="height:100%;">
+                <div class="card text-black bg-light" style="height:100%;">
                 <img class="card-img-top" src="<%= campground.image %>">
                     <div class="card-body text-center">
                         <h4 class="card-title"><%= campground.name %></h4> 
+                        <p>
+                            <a href="/campgrounds/<%= campground._id %>" class="btn btn-success">More Info</a>
+                        </p>
                     </div>
+                    
                 </div>  
             </div>
             
