@@ -33,7 +33,6 @@ app.get("/blogs", (req, res) => {
             res.render("index", { blogs: blogs });
         }
     });
-    res.render("index")
 });
 
 app.listen(3000, () => console.log("Blog is live!"));
