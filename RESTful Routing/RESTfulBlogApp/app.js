@@ -24,6 +24,7 @@ const Blog = mongoose.model("Blog", blogSchema);
 // RESTful Routes
 app.get("/", (req, res) => res.redirect("/blogs"));
 
+// INDEX Route
 app.get("/blogs", (req, res) => {
     Blog.find({}, (err, blogs) => {
         if (err) {
@@ -33,6 +34,23 @@ app.get("/blogs", (req, res) => {
             res.render("index", { blogs: blogs });
         }
     });
+});
+
+// NEW Route
+app.get("/blogs/new", (req, res) => res.render("new"));
+
+// CREATE Route
+app.post("/blogs", (req, res) => {
+    // Create blog
+    Blog.create(req.body.blog, (err, newBlog) => {
+        if (err) {
+            res.render("new");
+        }
+        else {
+            // Redirect to the Index
+            res.redirect("/blogs");
+        }
+    })
 });
 
 app.listen(3000, () => console.log("Blog is live!"));
