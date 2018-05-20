@@ -97,18 +97,16 @@ app.put("/blogs/:id", (req, res) => {
 
 // DELETE Route
 app.delete("/blogs/:id", (req, res) => {
-    res.send("YOU HAVE MADE IT");
-    // // Destroy blog
-    // Blog.findByIdAndRemove(req.params.id, (err) => {
-    //     if (err) {
-    //         console.log(err);
-    //     }
-    //     // Redirect
-    //     else {
-    //         res.redirect("/blogs");
-    //     }
-    // });
-
+    // Destroy blog
+    Blog.findByIdAndRemove(req.params.id, (err) => {
+        if (err) {
+            console.log(err);
+        }
+        // Redirect
+        else {
+            res.redirect("/blogs");
+        }
+    });
 });
 
 app.listen(3000, () => console.log("Blog is live!"));

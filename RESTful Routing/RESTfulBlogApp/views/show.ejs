@@ -19,8 +19,8 @@
                 </div>
                 <div class="container" style="padding-top: 10px; width: 100%">
                     <a class="fluid ui blue button" href="/blogs/<%= blog._id %>/edit">Edit</a>
-                    <form class="fluid ui red button" action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
-                        Delete
+                    <form action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
+                        <button class="fluid ui red button">Delete</button>
                     </form>
                 </div>
             </div>
