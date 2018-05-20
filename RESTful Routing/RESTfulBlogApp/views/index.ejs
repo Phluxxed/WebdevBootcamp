@@ -1,14 +1,41 @@
 <% include ./partials/header %>
 
-<h4>Index Page!</h4>
+    <div class="ui main text container">
+        <div class="ui huge header">
+            <h1>RESTful Blog App</h1>
+        </div>
+        <div class="ui top attached segment">
+            <div class="ui divided items">
+                <% blogs.forEach ((blog) => { %>
+                    <div class="item">
+                        <div class="image" style="width: 50%">
+                            <img src="<%= blog.image %>">
+                        </div>
+                        <div class="content">
+                            <a class="header" href="/blogs/<%= blog._id %>">
+                                <%= blog.title %>
+                            </a>
+                            <div class="meta">
+                                <span>
+                                    <%= blog.created.toDateString() %>
+                                </span>
+                            </div>
+                            <div class="description">
+                                <p>
+                                    <%- blog.body.substring(0, 100) %>...
+                                </p>
 
-<% blogs.forEach ((blog) => { %>
-    <div>
-        <h2><%= blog.title %></h2>
-        <img src="<%= blog.image %>" style="width: 80%">
-        <span><%= blog.created %></span>
-        <p><%= blog.body %></p>
+                            </div>
+                            <div class="extra">
+                                <a class="ui inverted dark blue button" href="/blogs/<%= blog._id %>">Read More</a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <% }); %>
+            </div>
+        </div>
+
+
     </div>
-<% }); %>
-
-<% include ./partials/footer %>
+    <% include ./partials/footer %>
