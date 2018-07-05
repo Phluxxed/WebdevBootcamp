@@ -13,29 +13,29 @@ const User = require("./Models/user");
 //     }
 // );
 
-Post.create(
-    {
-        title: "How to cook the best burger pt. 4",
-        content: "266513165131251"
-    }, (err, post) => {
-        User.findOne({ email: "bob@gmail.com" }, (err, foundUser) => {
-            if (err) {
-                console.log(err)
-            }
-            else {
-                foundUser.posts.push(post);
-                foundUser.save((err, data) => {
-                    if (err) {
-                        console.log(err);
-                    }
-                    else {
-                        console.log(data);
-                    }
-                });
-            }
-        });
-    }
-);
+// Post.create(
+//     {
+//         title: "How to cook the best burger pt. 4",
+//         content: "266513165131251"
+//     }, (err, post) => {
+//         User.findOne({ email: "bob@gmail.com" }, (err, foundUser) => {
+//             if (err) {
+//                 console.log(err)
+//             }
+//             else {
+//                 foundUser.posts.push(post);
+//                 foundUser.save((err, data) => {
+//                     if (err) {
+//                         console.log(err);
+//                     }
+//                     else {
+//                         console.log(data);
+//                     }
+//                 });
+//             }
+//         });
+//     }
+// );
 
 // Find user
 // Find all posts for user
